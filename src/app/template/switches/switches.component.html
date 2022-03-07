@@ -1,0 +1,94 @@
+<h2>Template: Dynamics</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <form #peopleForm="ngForm" (ngSubmit)="onSave()" autocomplete="off">
+            <!-- Radio  -->
+            <div class="mb-3 row">
+                <label for="" class="col-sm-3 col-form-label">
+                    Gender
+                </label>
+                <div class="col-sm-9">
+                    <div class="form-check">
+                        <input
+                            class="form-check-input"
+                            type="radio"
+                            name="flexRadioDefault"
+                            value="M"
+                            [(ngModel)]="person.gender"
+                            id="flexRadioDefault1"
+                            required
+                        >
+                        <label for="flexRadioDefault1" class="form-check-label">Male</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input
+                            class="form-check-input"
+                            type="radio"
+                            name="flexRadioDefault"
+                            value="F"
+                            [(ngModel)]="person.gender"
+                            id="flexRadioDefault2"
+                            required
+                        >
+                        <label for="flexRadioDefault2" class="form-check-label">Female</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Switches -->
+            <div class="mb-3 row">
+                <label for="" class="col-sm-3 col-form-label">
+                    Notifications
+                </label>
+                <div class="col-sm-9">
+                    <div class="form-check form-switch mt-2">
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            name="canRecibeNotifications"
+                            [(ngModel)]="person.canRecibeNotifications"
+                            id="notifications"
+                        >
+                        <label for="notifications" class="form-check-label">Want to receive notifications</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label for="" class="col-sm-3 col-form-label">
+                    
+                </label>
+                <div class="col-sm-9">
+                    <div class="form-check">
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            name="isAgreeTyC"
+                            [(ngModel)]="person.isAgreeTyC"
+                            id="termsAndConditions"
+                        >
+                        <label for="termsAndConditions" class="form-check-label">I agree Terms and Conditions</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary float-end" [disabled]="peopleForm.invalid">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <span>Data Form:</span>
+        <pre>{{peopleForm.value | json}}</pre>
+    </div>
+</div>

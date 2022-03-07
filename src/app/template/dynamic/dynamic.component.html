@@ -1,0 +1,84 @@
+<h2>Template: Dynamics</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <form #peopleForm="ngForm" (ngSubmit)="onSave()" autocomplete="off">
+            <div class="mb-3 row" *ngFor="let item of fieldsForm;">
+                <label for="" class="col-sm-3 col-form-label">
+                    {{ item.text }}
+                </label>
+                <div class="col-sm-9">
+                    <div class="input-group">
+                        <input 
+                            class="form-control"
+                            ngModel
+                            [type]="item.type"
+                            [name]="item.name"
+                            [required]="item.isRequired!"
+                            [attr.placeholder]="item.placeHolder"
+                            [minlength]="item.minLength || 0"
+                            customMin
+                        >
+                        <button
+                            type="button"
+                            class="btn btn-outline-primary"
+                            *ngIf="item.hasButton"
+                            (click)="onClickButton(item.name,$event)"
+                        >
+                            {{ item.buttonText }}
+                        </button>
+                    </div>
+                    <span
+                        class="form-text text-danger" 
+                        *ngIf="isFieldValid(item.name)"
+                    >
+                        {{ item.errorMessage }}
+                    </span>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label for="" class="col-sm-3 col-form-label">
+                    Favoritos
+                </label>
+                <div class="col-sm-9">
+                    <div class="input-group mb-1" *ngFor="let game of person.favoritesVideoGame;let i = index;">
+                        <input
+                            class="form-control"
+                            [(ngModel)]="game.name"
+                            type="text"
+                            name="favGame_{{game.id}}"
+                            placeholder="VideoGame"
+                        >
+                        <button
+                            type="button"
+                            class="btn btn-outline-danger"
+                            (click)="removeVideoGame(i)"
+                        >
+                            Remove
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="coll">
+                    <button type="submit" class="btn btn-primary float-end" [disabled]="peopleForm.invalid">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <span>People Data:</span>
+        <pre>{{ person | json }}</pre>
+
+        <span>Form Data:</span>
+        <pre>{{ peopleForm.value | json }}</pre>
+    </div>
+</div>
