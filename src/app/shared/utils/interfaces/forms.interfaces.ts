@@ -1,3 +1,5 @@
+import { AbstractControl } from "@angular/forms";
+
 export interface IFormField {
     placeHolder: string,
     type: string,
@@ -9,6 +11,11 @@ export interface IFormField {
     validators?: ((data: any) => boolean)[],
     hasButton?:boolean,
     buttonText?: string
+    minValue?: number
+}
+
+export interface IFormControl {
+    [key: string]: AbstractControl;
 }
 
 export interface ICallBackList {

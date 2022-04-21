@@ -16,13 +16,15 @@ export const formFieldGroup: IFormField[] = [
         placeHolder: 'Product Price',
         name: 'price',
         isRequired: true,
-        errorMessage:'Insert a valid price'
+        errorMessage:'Insert a valid price',
+        minValue: 0
     },
     {
         text: 'Stock',
         type: 'number',
         placeHolder: 'How many are there...',
-        name: 'stock'
+        name: 'stock',
+        minValue: 0
     }
 ]
 

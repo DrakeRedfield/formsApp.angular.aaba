@@ -1,1 +1,47 @@
-<p>basic works!</p>
+<h2>Template: Basics</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <form autocomplete="off" [formGroup]="productForm">
+            <div class="mb-3 row" *ngFor="let item of fieldsForm;">
+                <label for="" class="col-sm-3 col-form-label">
+                    {{ item.text }}
+                </label>
+                <div class="col-sm-9">
+                    <input 
+                        class="form-control"
+                        [type]="item.type"
+                        [formControlName]="item.name"
+                        [required]="item.isRequired!"
+                        [attr.placeholder]="item.placeHolder"
+                    >
+                    <span
+                        class="form-text text-danger" 
+                        *ngIf="isFieldValid(item.name)"
+                    >
+                        {{ item.errorMessage }}
+                    </span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="coll">
+                    <button type="submit" class="btn btn-primary float-end" (click)="save()">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <span>Is Valid:</span>
+        <pre>{{ productForm.valid }}</pre>
+
+        <span>Form Data:</span>
+        <pre>{{ productForm.value | json }}</pre>
+    </div>
+</div>
