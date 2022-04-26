@@ -34,7 +34,7 @@ export interface IPersonTemplateForm {
     favoritesVideoGame?: IPersonVideoGameForm[],
     gender?: string,
     isAgreeTyC?: boolean,
-    canRecibeNotifications?: boolean
+    canReceiveNotifications?: boolean
 }
 
 export interface IPersonVideoGameForm {

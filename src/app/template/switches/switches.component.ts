@@ -12,7 +12,7 @@ export class SwitchesComponent {
 
   person: IPersonTemplateForm = {
     gender: 'M',
-    canRecibeNotifications: false,
+    canReceiveNotifications: false,
     isAgreeTyC: false
   }
 
