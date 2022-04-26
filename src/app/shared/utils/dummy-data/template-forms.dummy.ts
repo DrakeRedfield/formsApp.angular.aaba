@@ -1,3 +1,4 @@
+import { Validators } from "@angular/forms";
 import { IFormField } from "src/app/shared/utils/interfaces/forms.interfaces";
 
 export const formFieldGroup: IFormField[] = [
@@ -32,11 +33,11 @@ export const DynamicFormFieldGroup: IFormField[] = [
     {
         text: 'Name',
         type: 'text',
-        placeHolder: 'Product Name',
+        placeHolder: 'Full Name',
         name: 'fullName',
         isRequired: true,
-        minLength: 0,
-        errorMessage:'',
+        minLength: 2,
+        errorMessage:'Insert a valid name',
         hasButton: false
     },
     {
@@ -45,9 +46,26 @@ export const DynamicFormFieldGroup: IFormField[] = [
         placeHolder: 'Video Game :0',
         name: 'favoriteVideoGame',
         isRequired: true,
-        minLength: 0,
-        errorMessage:'',
+        minLength: 2,
+        errorMessage:'Insert a valid videogame',
         hasButton: true,
-        buttonText: 'Add' 
+        buttonText: 'Add',
+        formListConfiguration: [
+            {
+                defaultValue: 'Uncharted',
+                validators: [Validators.required],
+                asyncValidators: []
+            },
+            {
+                defaultValue: 'Fortnite',
+                validators: [Validators.required],
+                asyncValidators: []
+            },
+            {
+                defaultValue: 'Halo',
+                validators: [Validators.required],
+                asyncValidators: []
+            }
+        ]
     },
 ]

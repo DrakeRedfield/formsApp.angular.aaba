@@ -3,34 +3,59 @@
 
 <div class="row">
     <div class="col">
-        <form autocomplete="off">
-            <div class="mb-3 row" *ngFor="let item of fieldsForm;">
+        <form [formGroup]="peopleForm" autocomplete="off" (submit)="save()">
+            <ng-container *ngFor="let item of fieldsForm;">
+                <div class="mb-3 row" *ngIf="!item.formListConfiguration">
+                    <label for="" class="col-sm-3 col-form-label">
+                        {{ item.text }}
+                    </label>
+                    <div class="col-sm-9">
+                        <div class="input-group">
+                            <input 
+                                class="form-control"
+                                [type]="item.type"
+                                [formControlName]="item.name"
+                                [required]="item.isRequired!"
+                                [attr.placeholder]="item.placeHolder"
+                            >
+                        </div>
+                        <span
+                            class="form-text text-danger" 
+                            *ngIf="isFieldValid(item.name)"
+                        >
+                            {{ item.errorMessage }}
+                        </span>
+                    </div>
+                </div>
+            </ng-container>
+            
+
+            <div class="mb-3 row">
                 <label for="" class="col-sm-3 col-form-label">
-                    {{ item.text }}
+                    Favorite Videogames
                 </label>
                 <div class="col-sm-9">
                     <div class="input-group">
                         <input 
                             class="form-control"
-                            [type]="item.type"
-                            [name]="item.name"
-                            [required]="item.isRequired!"
-                            [attr.placeholder]="item.placeHolder"
+                            type="text"
+                            [formControl]="newVideogame"
+                            placeholder="Video Game :0"
+                            (keyup.enter)="addVideoGame()"
                         >
                         <button
                             type="button"
                             class="btn btn-outline-primary"
-                            *ngIf="item.hasButton"
-                            (click)="onClickButton(item.name,$event)"
+                            (click)="addVideoGame()"
                         >
-                            {{ item.buttonText }}
+                            add
                         </button>
                     </div>
                     <span
-                        class="form-text text-danger" 
-                        *ngIf="isFieldValid(item.name)"
+                        class="form-text text-danger"
+                        *ngIf="newVideogame.valid && newVideogame.touched"
                     >
-                        {{ item.errorMessage }}
+                        Insert a valid videogame
                     </span>
                 </div>
             </div>
@@ -39,12 +64,12 @@
                 <label for="" class="col-sm-3 col-form-label">
                     Favoritos
                 </label>
-                <div class="col-sm-9">
-                    <div class="input-group mb-1" *ngFor="let game of person.favoritesVideoGame;let i = index;">
+                <div class="col-sm-9" formArrayName="favoriteVideoGame">
+                    <div class="input-group mb-1" *ngFor="let favorite of favoritesGames.controls; let i = index;">
                         <input
                             class="form-control"
                             type="text"
-                            name="favGame_{{game.id}}"
+                            [formControlName]="i"
                             placeholder="VideoGame"
                         >
                         <button
@@ -69,12 +94,12 @@
     </div>
 </div>
 
-<!-- <div class="row">
+<div class="row">
     <div class="col">
-        <span>People Data:</span>
-        <pre>{{ person | json }}</pre>
+        <!-- <span>People Data:</span>
+        <pre>{{ person | json }}</pre> -->
 
         <span>Form Data:</span>
         <pre>{{ peopleForm.value | json }}</pre>
     </div>
-</div> -->
+</div>

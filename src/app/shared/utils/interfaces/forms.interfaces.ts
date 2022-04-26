@@ -1,4 +1,4 @@
-import { AbstractControl } from "@angular/forms";
+import { AbstractControl, AsyncValidatorFn, ValidatorFn } from "@angular/forms";
 
 export interface IFormField {
     placeHolder: string,
@@ -11,7 +11,14 @@ export interface IFormField {
     validators?: ((data: any) => boolean)[],
     hasButton?:boolean,
     buttonText?: string
-    minValue?: number
+    minValue?: number,
+    formListConfiguration?: IFormArrayConfiguration[]
+}
+
+export interface IFormArrayConfiguration {
+    defaultValue?: string,
+    validators?: ValidatorFn | ValidatorFn[],
+    asyncValidators?: AsyncValidatorFn | AsyncValidatorFn[]
 }
 
 export interface IFormControl {
