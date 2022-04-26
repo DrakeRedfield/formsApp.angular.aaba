@@ -1,27 +1,14 @@
 # FormsApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.
+On this project, we can use Template Forms and Reactive Forms for Basic, Dynamics and Switches components
 
-## Development server
+## Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1. Clone this repository
+2. Open a terminal on project directory
+3. use `npm i` to install all dependencies
+4. Run server with `ng serve -o`
 
-## Code scaffolding
+## Contact me
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+* [LinkedIn profile](https://www.linkedin.com/in/angel-antonio-barco-alfaro-b36b6316a/)
