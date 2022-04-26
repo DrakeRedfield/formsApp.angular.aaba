@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col">
-        <form autocomplete="off">
+        <form autocomplete="off" [formGroup]="peopleForm">
             <!-- Radio  -->
             <div class="mb-3 row">
                 <label for="" class="col-sm-3 col-form-label">
@@ -14,7 +14,7 @@
                         <input
                             class="form-check-input"
                             type="radio"
-                            name="flexRadioDefault"
+                            formControlName="gender"
                             value="M"
                             id="flexRadioDefault1"
                             required
@@ -26,7 +26,7 @@
                         <input
                             class="form-check-input"
                             type="radio"
-                            name="flexRadioDefault"
+                            formControlName="gender"
                             value="F"
                             id="flexRadioDefault2"
                             required
@@ -46,7 +46,7 @@
                         <input
                             class="form-check-input"
                             type="checkbox"
-                            name="canRecibeNotifications"
+                            formControlName="canReceiveNotifications"
                             id="notifications"
                         >
                         <label for="notifications" class="form-check-label">Want to receive notifications</label>
@@ -63,7 +63,7 @@
                         <input
                             class="form-check-input"
                             type="checkbox"
-                            name="isAgreeTyC"
+                            formControlName="isAgreeTyC"
                             id="termsAndConditions"
                         >
                         <label for="termsAndConditions" class="form-check-label">I agree Terms and Conditions</label>
@@ -73,7 +73,7 @@
 
             <div class="row">
                 <div class="col">
-                    <button type="submit" class="btn btn-primary float-end">
+                    <button type="submit" class="btn btn-primary float-end" (click)="save()">
                         Save
                     </button>
                 </div>
@@ -82,9 +82,9 @@
     </div>
 </div>
 
-<!-- <div class="row">
+<div class="row">
     <div class="col">
         <span>Data Form:</span>
         <pre>{{peopleForm.value | json}}</pre>
     </div>
-</div> -->
+</div>

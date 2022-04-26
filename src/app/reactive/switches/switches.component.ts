@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { IPersonTemplateForm } from 'src/app/shared/utils/interfaces/forms.interfaces';
 
 @Component({
@@ -6,19 +7,37 @@ import { IPersonTemplateForm } from 'src/app/shared/utils/interfaces/forms.inter
   templateUrl: './switches.component.html',
   styleUrls: ['./switches.component.scss']
 })
-export class SwitchesComponent {
+export class SwitchesComponent implements OnInit {
+
+  peopleForm = this.formBuilder.group({
+    gender: ['M', Validators.required],
+    canReceiveNotifications: [false, Validators.required],
+    isAgreeTyC: [true, Validators.requiredTrue]
+  });
 
   person: IPersonTemplateForm = {
     gender: 'M',
-    canRecibeNotifications: false,
-    isAgreeTyC: false
+    canReceiveNotifications: false
   }
 
-  isFieldValid( fieldName: string ): boolean {
-    // const field = this.peopleForm?.controls[fieldName];
-    // return field?.invalid && 
-    //        field?.touched;
-    return true;
+  ngOnInit(): void {
+      this.peopleForm.setValue({
+        ...this.person,
+        isAgreeTyC: true
+      });
+  }
+
+  constructor( private formBuilder: FormBuilder ) { }
+
+  save() {
+    if(!this.peopleForm.get('isAgreeTyC')?.value){
+      return;
+    }
+
+    const personValue = {...this.peopleForm.value}
+    delete personValue.isAgreeTyC;
+
+    console.log('Form Values: ', personValue);
   }
 
 }
